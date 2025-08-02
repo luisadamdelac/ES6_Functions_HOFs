@@ -54,4 +54,5 @@ totalCartValueElement.textContent = `₱${totalCartValue}`;
 totalCartValueElement.style.fontSize = "1rem";
 totalCartValueElement.style.color = "orange";
 totalCartValueElement.style.fontWeight = "bold";
+
 totalCartValueElement.style.fontFamily = "arial";
