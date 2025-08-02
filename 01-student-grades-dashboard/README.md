@@ -1,6 +1,9 @@
-# Movie Recommendation Filter
+# Student Grades Dashboard
 
 ## Tasks
-1. Filter movies with rating ≥ 8.
-2. Create a list of movie titles in this format: `"Inception (Sci-Fi) - 8.8 ⭐"`.
-3. Create a function `recommend(movie, minRating = 8)` that returns `true` if rating ≥ minRating.
+1. Display all student names in uppercase.
+2. Filter and display students with grade ≥ 85.
+3. Calculate the average grade using `reduce()`.
+4. Write a function `displayStudent({name, grade})` using destructuring to return a formatted string.
+5. Add default parameter support: if grade is missing, default to 0.
+
