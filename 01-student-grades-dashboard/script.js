@@ -1,53 +1,81 @@
 // Starter data
-const movies = [
-  { title: "Inception", genre: "Sci-Fi", rating: 8.8 },
-  { title: "Frozen", genre: "Animation", rating: 7.5 },
-  { title: "The Godfather", genre: "Crime", rating: 9.2 },
-  { title: "Interstellar", genre: "Sci-Fi", rating: 8.6 }
+const students = [
+  { name: "Anna", grade: 92 },
+  { name: "Ben", grade: 78 },
+  { name: "Clara", grade: 88 },
+  { name: "David", grade: 84 },
+  { name: "Ella" } // no grade, should use default
 ];
 
 // Start coding here...
 
+// 1. Display all student names in uppercase
+const originalNamesElement = document.getElementById("original-names");
+const updatedNamesElement = document.getElementById("updated-names");
 
-const recommend = (movie, minRating = 8) => movie.rating >= minRating;
+const studentNames = students.map(student => student.name);
+const namesUpper = students.map(student => student.name.toUpperCase());
 
-// 1. Filter movies with rating ≥ 8.
-const filteredMovies = movies.filter(movie => recommend(movie));
+console.log(studentNames);
+console.log(namesUpper);
 
-const filteredMoviesListElement = document.getElementById("filtered-movies-list");
-filteredMoviesListElement.innerHTML = filteredMovies
-  .map(({ title }) => `<li>${title}</li>`).join(""); 
+originalNamesElement.style.fontSize = "1rem";
+updatedNamesElement.style.fontSize = "1rem";
+originalNamesElement.style.color = "pink";
+updatedNamesElement.style.color = "blue";
+originalNamesElement.style.fontWeight = "bold";
+updatedNamesElement.style.fontWeight = "bold";
+originalNamesElement.style.fontFamily = "arial";
+updatedNamesElement.style.fontFamily = "arial";
 
-  filteredMoviesListElement.style.fontSize = "1rem";
-  filteredMoviesListElement.style.color = "blue";
-  filteredMoviesListElement.style.fontWeight = "bold";
-  filteredMoviesListElement.style.fontFamily = "arial";
+originalNamesElement.textContent = studentNames.join(", ");
+updatedNamesElement.textContent = namesUpper.join(", ");
 
-// 2. Create formatted list of movie titles 
-const formattedMovieList = filteredMovies.map(
-  ({ title, genre, rating }) => `${title} (${genre}) - ${rating} ⭐`
-);
+// 2. Filter and display students with grade ≥ 85
+const filteredStudentsElement = document.getElementById("filtered-students");
 
-const formattedMovieListElement = document.getElementById("formatted-movie-list");
-formattedMovieListElement.innerHTML = formattedMovieList
-  .map(item => `<p>${item}</p>`)
-  .join("");  
+const filteredStudents = students.filter(student => (student.grade ?? 0) >= 85);
 
-  formattedMovieListElement.style.fontSize = "1rem";
-  formattedMovieListElement.style.color = "green";
-  formattedMovieListElement.style.fontWeight = "bold";
-  formattedMovieListElement.style.fontFamily = "arial";
+filteredStudentsElement.textContent = filteredStudents
+.map(student => `${student.name} (${student.grade ?? 0})`)
+.join(", ");
 
-// 3. Display recommend result for test movie (task 3)
-const recommendationResultElement = document.getElementById("recommendation-result");
+filteredStudentsElement.style.fontSize = "1rem";
+filteredStudentsElement.style.color = "yellow";
+filteredStudentsElement.style.fontWeight = "bold";
+filteredStudentsElement.style.fontFamily = "arial";
 
+// 3. Calculate the average grade using reduce()
+const averageGradeElement = document.getElementById("average-grade");
 
-const testMovie = movies.find(m => m.title === "Frozen");
-recommendationResultElement.textContent = testMovie
-  ? `Is "${testMovie.title}" recommended? ${recommend(testMovie) ? "Yes" : "No"}`
-  : "Test movie not found.";
+const totalGrades = students.reduce((sum, student) => sum + (student.grade ?? 0), 0);
+const averageGrade = totalGrades / students.length;
 
-  recommendationResultElement.style.fontSize = "1rem";
-  recommendationResultElement.style.color = "orange";
-  recommendationResultElement.style.fontWeight = "bold";
-  recommendationResultElement.style.fontFamily = "arial";
+averageGradeElement.textContent = averageGrade.toFixed(2);
+
+averageGradeElement.style.fontSize = "1rem";
+averageGradeElement.style.color = "orange";
+averageGradeElement.style.fontWeight = "bold";
+averageGradeElement.style.fontFamily = "arial";
+
+// 4. Write a function displayStudent({name, grade}) using destructuring
+function displayStudent({ name, grade }) {
+  return `Student: ${name}, Grade: ${grade}`;
+}
+
+// 5. Add default parameter support: if grade is missing, default to 0
+
+// display all students using the function that has default parameter 
+const displayStudentsElement = document.getElementById("display-students");
+
+function displayStudentWithDefault({ name, grade = 0 }) {
+  return `Student: ${name}, Grade: ${grade}`;
+}
+
+displayStudentsElement.textContent = students
+  .map(displayStudentWithDefault).join("\n");
+
+displayStudentsElement.style.fontSize = "1rem";
+displayStudentsElement.style.color = "green";
+displayStudentsElement.style.fontWeight = "bold";
+displayStudentsElement.style.fontFamily = "arial";
