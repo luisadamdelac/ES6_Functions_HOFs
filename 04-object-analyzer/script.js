@@ -66,3 +66,4 @@ filteredSettingsObjectElement.innerHTML = Object.entries(filteredSettingsObject)
   filteredSettingsObjectElement.style.fontWeight = "bold";
   filteredSettingsObjectElement.style.fontFamily = "arial";
 
+
