@@ -79,3 +79,4 @@ displayStudentsElement.style.fontSize = "1rem";
 displayStudentsElement.style.color = "green";
 displayStudentsElement.style.fontWeight = "bold";
 displayStudentsElement.style.fontFamily = "arial";
+
