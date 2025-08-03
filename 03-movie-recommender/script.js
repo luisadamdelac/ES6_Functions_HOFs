@@ -51,3 +51,4 @@ recommendationResultElement.textContent = testMovie
   recommendationResultElement.style.color = "orange";
   recommendationResultElement.style.fontWeight = "bold";
   recommendationResultElement.style.fontFamily = "arial";
+
